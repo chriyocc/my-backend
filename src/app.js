@@ -7,6 +7,7 @@ const app = express();
 //whitelist for CORS
 const allowedOrigins = [
   "https://www.yoyojun.site", 
+  "https://api.yoyojun.site", 
   "http://localhost:5501"    
 ];
 
