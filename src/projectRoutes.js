@@ -9,8 +9,4 @@ router.get('/projects', async (req, res) => {
   res.json(data);
 });
 
-router.get('/projects/:id', (req, res) => {
-  res.json({ message: `Project ${req.params.id}` });
-});
-
 export default router;
