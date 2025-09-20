@@ -24,11 +24,14 @@ Returns all published projects.
 [
   {
     "id": "uuid",
-    "title": "My Portfolio Site",
-    "slug": "my-portfolio-site",
-    "description": "Personal website built with Next.js",
-    "tech_stack": ["Next.js", "Tailwind"],
-    "created_at": "2025-09-18T12:34:56Z"
+    "slug": "test-project",
+    "title": "Test Project",
+    "date": "19 Septembern 2025",
+  	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
+    "description": "A cool side project",
+    "mardown_content": "markdown content",
+    "tool_icon1": "<svg >",
+    "tool_icon2": "<svg >"
   }
 ]
 ```
@@ -49,14 +52,16 @@ Returns details for a project.
 
 #### Response
 
-```
+```json
 {
-  "id": "uuid",
-  "title": "My Portfolio Site",
-  "description": "Personal website built with Next.js",
-  "tech_stack": ["Next.js", "Tailwind"],
-  "repo_url": "https://github.com/me/portfolio",
-  "live_url": "https://me.dev"
+    "slug": "test-project",
+    "title": "Test Project",
+    "date": "19 Septembern 2025",
+  	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
+    "description": "A cool side project",
+    "mardown_content": "markdown content",
+    "tool_icon1": "<svg >",
+    "tool_icon2": "<svg >"
 }
 ```
 
@@ -72,24 +77,71 @@ Returns details for a project.
 
 #### Request Body
 
-```
+```json
 {
-  "title": "New App",
-  "description": "A cool side project",
-  "tech_stack": ["React", "Node"],
-  "repo_url": "https://github.com/me/new-app"
+    "slug": "test-project",
+    "title": "Test Project",
+    "date": "19 Septembern 2025",
+  	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
+    "description": "A cool side project",
+    "mardown_content": "markdown content",
+    "tool_icon1": "<svg >",
+    "tool_icon2": "<svg >"
 }
 ```
 
 #### Response
 
-```
+```json
 {
-  "id": "uuid",
-  "title": "New App",
-  "created_at": "2025-09-18T13:00:00Z"
+    "slug": "test-project",
+    "title": "Test Project",
+    "date": "19 Septembern 2025",
+  	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
+    "description": "A cool side project",
+    "mardown_content": "markdown content",
+    "tool_icon1": "<svg >",
+    "tool_icon2": "<svg >"
 }
 ```
+
+
+
+### 4. Delete Project
+
+#### DELETE `/api/v1/projects/:id`
+
+Deletes a project by its `id`.
+
+**URL Parameters**
+
+| Name | Type | Required | Description                     |
+| ---- | ---- | -------- | ------------------------------- |
+| `id` | uuid | ✅        | The ID of the project to delete |
+
+**Response**
+
+| Code  | Description                  |
+| ----- | ---------------------------- |
+| `200` | Project deleted successfully |
+| `404` | Project not found            |
+| `500` | Server error                 |
+
+**Example Request**
+
+```
+DELETE https://api.yoyojun.site/api/v1/projects/123
+```
+
+**Example Response**
+
+```
+{
+  "message": "Project deleted successfully"
+}
+```
+
+> ⚠️ If you use authentication, mention in the docs which roles are allowed to delete.
 
 ------
 
