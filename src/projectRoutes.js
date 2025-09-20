@@ -21,6 +21,21 @@ router.post("/projects", async (req, res) => {
   res.status(201).json(data[0]);
 });
 
+router.get("/projects/:slug", async (req, res) => {
+  const { slug } = req.params;
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .eq("slug", slug)
+    .single(); // get only one row
+
+  if (error) {
+    return res.status(404).json({ message: "Project not found", error: error.message });
+  }
+
+  res.status(200).json(data);
+});
+
 router.delete("/projects/:id", async (req, res) => {
   const { id } = req.params;
   const { data, error } = await supabase.from("projects").delete().eq("id", id).select();
