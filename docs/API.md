@@ -1,6 +1,6 @@
 # Portfolio API – v1
 
-Base URL: `https://api.yourdomain.com/api/v1`
+Base URL: `https://api.yoyojun.site/api/v1`
 
 This API lets you manage projects and journal posts for your portfolio website.
 
@@ -26,13 +26,24 @@ Returns all published projects.
     "id": "uuid",
     "slug": "test-project",
     "title": "Test Project",
-    "date": "19 Septembern 2025",
+    "date": "19 September 2025",
+  	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
+    "description": "A cool side project",
+    "markdown_content": "markdown content",
+    "tool_icon1": "<svg >",
+    "tool_icon2": "<svg >"
+  },
+  
+  {
+    "slug": "test2-project",
+    "title": "Test2 Project",
+    "date": "19 September 2025",
   	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
     "description": "A cool side project",
     "mardown_content": "markdown content",
     "tool_icon1": "<svg >",
     "tool_icon2": "<svg >"
-  }
+}
 ]
 ```
 
@@ -81,10 +92,10 @@ Returns details for a project.
 {
     "slug": "test-project",
     "title": "Test Project",
-    "date": "19 Septembern 2025",
+    "date": "19 September 2025",
   	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
     "description": "A cool side project",
-    "mardown_content": "markdown content",
+    "markdown_content": "markdown content",
     "tool_icon1": "<svg >",
     "tool_icon2": "<svg >"
 }
@@ -96,10 +107,10 @@ Returns details for a project.
 {
     "slug": "test-project",
     "title": "Test Project",
-    "date": "19 Septembern 2025",
+    "date": "19 September 2025",
   	"image": "https://res.cloudinary.com/dlaqeohvw/image/upload/v1754748504/img-udo_mqwufl.png",
     "description": "A cool side project",
-    "mardown_content": "markdown content",
+    "markdown_content": "markdown content",
     "tool_icon1": "<svg >",
     "tool_icon2": "<svg >"
 }
@@ -159,26 +170,3 @@ DELETE https://api.yoyojun.site/api/v1/projects/123
 
 - **v1.0** – Initial release: projects endpoints.
 
-```
----
-
-## 4️⃣ (Optional) Swagger / OpenAPI
-
-If you want interactive docs:
-1. Install `swagger-jsdoc` and `swagger-ui-express`.
-2. Write OpenAPI spec in YAML or JS comments.
-3. Serve docs at `/docs`.
-
----
-
-## 5️⃣ Tips
-
-- Keep docs **close to the code** (in the same repo).
-- Update them whenever you add or change endpoints.
-- Include example curl commands or Postman snippets.
-- If you add authentication, document how to get & send tokens.
-
----
-
-Would you like a ready-to-use **Swagger/OpenAPI** template for your `/projects` routes?
-```

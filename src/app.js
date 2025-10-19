@@ -1,5 +1,5 @@
 import express from "express";
-import projectRoutes from "./projectRoutes.js";
+import test from "./test.js";
 import cors from "cors";
 
 const app = express();
@@ -8,7 +8,9 @@ const app = express();
 const allowedOrigins = [
   "https://www.yoyojun.site", 
   "https://api.yoyojun.site", 
-  "http://localhost:5501"    
+  "http://localhost:5501",
+  "http://localhost:3000",
+  "http://localhost:5173"
 ];
 
 app.use(
@@ -26,6 +28,6 @@ app.use(
 
 app.use(express.json());
 
-app.use('/api/v1', projectRoutes);
+app.use('/api/v1', test);
 
 export default app;
