@@ -1,5 +1,5 @@
 import express from "express";
-import test from "./test.js";
+import upload from "./upload_image.js";
 import cors from "cors";
 
 const app = express();
@@ -26,8 +26,8 @@ app.use(
   })
 );
 
-app.use(express.json());
+app.use(express.json({limit: '10mb'}));
 
-app.use('/api/v1', test);
+app.use('/api', upload);
 
 export default app;
