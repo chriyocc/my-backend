@@ -9,7 +9,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-cloudinary.api.update_upload_preset('journey_imgs_preset', {
+cloudinary.api.update_upload_preset('imgs_preset', {
   use_filename: true,
   unique_filename: true,
   overwrite: true,

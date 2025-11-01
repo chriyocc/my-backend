@@ -10,8 +10,7 @@ cloudinary.config({
 });
 
 cloudinary.api.create_upload_preset({
-  name: "journey_imgs_preset",
-  folder: 'journey_imgs',
+  name: "imgs_preset",
   allowed_formats: ['jpg', 'png', 'webp'],
 })
 .then(uploadResult => console.log(uploadResult))

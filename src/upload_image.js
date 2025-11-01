@@ -82,7 +82,7 @@ router.delete("/images/delete", async (req, res) => {
 
 router.post("/images/signature", (req, res) => {
   try {
-    const { folder = "upload_imgs", preset = "project_imgs_preset" } = req.body;
+    const { folder = "project_imgs", preset = "imgs_preset" } = req.body;
     const timestamp = Math.round(new Date().getTime() / 1000);
 
     const signature = cloudinary.utils.api_sign_request(
