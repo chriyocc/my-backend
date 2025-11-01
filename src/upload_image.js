@@ -12,7 +12,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-router.post("/upload", async (req, res) => {
+router.post("/images/upload", async (req, res) => {
   try {
     const { image, type = "project_imgs" } = req.body;
 
@@ -46,7 +46,7 @@ router.post("/upload", async (req, res) => {
   }
 });
 
-router.delete("/delete", async (req, res) => {
+router.delete("/images/delete", async (req, res) => {
   try {
     const { public_id } = req.body;
 
@@ -80,7 +80,7 @@ router.delete("/delete", async (req, res) => {
   }
 });
 
-router.post("/signature", (req, res) => {
+router.post("/images/signature", (req, res) => {
   try {
     const { folder = "upload_imgs", preset = "project_imgs_preset" } = req.body;
     const timestamp = Math.round(new Date().getTime() / 1000);
