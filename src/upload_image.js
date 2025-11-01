@@ -12,35 +12,33 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-router.post("/images/upload", async (req, res) => {
+router.get("/images", async (req, res) => {
   try {
-    const { image, type = "project_imgs" } = req.body;
-
-    if (!image) {
-      return res.status(400).json({ error: "No image provided" });
-    }
-
-    // Upload to Cloudinary
-    const result = await cloudinary.uploader.upload(image, {
-      upload_preset: `${type}_imgs_preset`,
+    const result = await cloudinary.api.resources({
+      type: "upload",
+      resource_type: "image",
     });
+
+    const images = result.resources.map((img) => ({
+      public_id: img.public_id,
+      url: img.secure_url,
+      width: img.width,
+      height: img.height,
+      format: img.format,
+      created_at: img.created_at,
+    }));
 
     res.json({
       success: true,
-      message: "Image uploaded successfully",
-      data: {
-        url: result.secure_url,
-        public_id: result.public_id,
-        width: result.width,
-        height: result.height,
-        format: result.format,
-      },
+      message: "All images loaded successfully",
+      count: images.length,
+      data: images,
     });
   } catch (error) {
-    console.error("Upload error:", error);
+    console.error("Error fetching images:", error);
     res.status(500).json({
       success: false,
-      error: "Failed to upload image",
+      error: "Failed to get images",
       message: error.message,
     });
   }
