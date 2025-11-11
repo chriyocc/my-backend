@@ -14,11 +14,22 @@ cloudinary.config({
 
 router.get("/images", async (req, res) => {
   try {
-    const result = await cloudinary.api.resources({
-      resource_type: "image",
-    });
+    let allResources = [];
+    let nextCursor = null;
 
-    const images = result.resources.map((img) => ({
+    do {
+      const result = await cloudinary.api.resources({
+        type: 'upload',
+        resource_type: "image",
+        max_results: 100,
+        next_cursor: nextCursor || undefined,
+      });
+
+      allResources = allResources.concat(result.resources);
+      nextCursor = result.next_cursor;
+    } while (nextCursor);
+
+    const images = allResources.map((img) => ({
       public_id: img.public_id,
       url: img.secure_url,
       width: img.width,
@@ -42,6 +53,7 @@ router.get("/images", async (req, res) => {
     });
   }
 });
+
 
 router.delete("/images/delete", async (req, res) => {
   try {
